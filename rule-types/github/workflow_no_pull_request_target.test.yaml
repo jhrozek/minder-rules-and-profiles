@@ -1,0 +1,37 @@
+tests:
+  - name: "Has a pull_request_target event"
+    def: {}
+    params: {}
+    expect: "fail"
+    git:
+      repo_base: "has_pull_request_target_direct"
+  - name: "Does not have a pull_request_target event"
+    def: {}
+    params: {}
+    expect: "pass"
+    git:
+      repo_base: "does_not_have_pull_request_target"
+  - name: "Has a pull_request_target event in an array"
+    def: {}
+    params: {}
+    expect: "fail"
+    git:
+      repo_base: "has_pull_request_target_array"
+  - name: "Does not have a pull_request_target event in an array"
+    def: {}
+    params: {}
+    expect: "pass"
+    git:
+      repo_base: "does_not_have_pull_request_target_array"
+  - name: "Has a pull_request_target event in an object"
+    def: {}
+    params: {}
+    expect: "fail"
+    git:
+      repo_base: "has_pull_request_target_object"
+  - name: "Does not have a pull_request_target event in an object"
+    def: {}
+    params: {}
+    expect: "pass"
+    git:
+      repo_base: "does_not_have_pull_request_target_object"
