@@ -4,17 +4,18 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"github.com/rs/zerolog"
-	"github.com/stretchr/testify/require"
-	"google.golang.org/protobuf/encoding/protojson"
-	"google.golang.org/protobuf/reflect/protoreflect"
-	"gopkg.in/yaml.v3"
 	"io"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
 	"testing"
+
+	"github.com/rs/zerolog"
+	"github.com/stretchr/testify/require"
+	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/reflect/protoreflect"
+	"gopkg.in/yaml.v3"
 
 	minderv1 "github.com/mindersec/minder/pkg/api/protobuf/go/minder/v1"
 	rtengine "github.com/mindersec/minder/pkg/engine/v1/rtengine"
@@ -280,7 +281,8 @@ func openRuleType(path string) (*minderv1.RuleType, error) {
 	defer ruleTypeFile.Close()
 
 	// parse the rule type file
-	rt, err := minderv1.ParseRuleType(ruleTypeFile)
+	rt := &minderv1.RuleType{}
+	err = minderv1.ParseResource(ruleTypeFile, rt)
 	if err != nil {
 		return nil, err
 	}
